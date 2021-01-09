@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 
 
 class Item extends Component {
 
-    buyItem = () => this.props.store.buyItem(this.props.item.name)
+    buyItem = () => this.props.Inventory.buyItem(this.props.item.name)
     
-    ////////onDoubleClick??????????????????????????????????????/
-    changePrice = () =>{
+    
+    changePrice = () =>{ //onDoubleClick??
         let newPrice = prompt('Please enter a new price')
-        this.props.store.changePrice(this.props.item.name, newPrice)
+        this.props.Inventory.changePrice(this.props.item.name, newPrice)
     } 
         
 
@@ -27,4 +27,4 @@ class Item extends Component {
     }
 }
 
-export default observer(Item)
+export default inject("Inventory")(observer(Item))

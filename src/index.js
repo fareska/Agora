@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Inventory } from './store/Inventory';
+import { Inventory as inventory } from './store/Inventory';
+import { Provider } from 'mobx-react';
 
 
-let inventory = new Inventory()
+let Inventory = new inventory()
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App store={inventory}  />
-  </React.StrictMode>,
+  <Provider Inventory={Inventory} >  <App />  </Provider>,
   document.getElementById('root')
 );
 
